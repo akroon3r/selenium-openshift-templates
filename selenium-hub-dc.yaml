@@ -1,44 +1,7 @@
+kind: Template
 apiVersion: v1
-kind: DeploymentConfig
 metadata:
-  name: selenium-hub
-spec:
-  replicas: 1
-  selector:
-    type: selenium-hub
-  template:
-    metadata:
-      labels:
-        type: selenium-hub
-      name: selenium-hub
-    spec:
-      containers:
-      - env:
-        - name: JAVA_OPTS
-          value: ${JAVA_OPTS}
-        - name: POOL_MAX
-          value: ${POOL_MAX}
-        - name: GRID_NEW_SESSION_WAIT_TIMEOUT
-          value: ${GRID_NEW_SESSION_WAIT_TIMEOUT}
-        - name: GRID_JETTY_MAX_THREADS
-          value: ${GRID_JETTY_MAX_THREADS}
-        - name: GRID_NODE_POLLING
-          value: ${GRID_NODE_POLLING}
-        - name: GRID_CLEAN_UP_CYCLE
-          value: ${GRID_CLEAN_UP_CYCLE}
-        - name: GRID_TIMEOUT
-          value: ${GRID_TIMEOUT}
-        - name: GRID_BROWSER_TIMEOUT
-          value: ${GRID_BROWSER_TIMEOUT}
-        - name: GRID_MAX_SESSION
-          value: ${GRID_MAX_SESSION}
-        - name: GRID_UNREGISTER_IF_STILL_DOWN_AFTER
-          value: ${GRID_UNREGISTER_IF_STILL_DOWN_AFTER}
-        image: selenium/hub
-        name: master
-        ports:
-        - containerPort: 4444
-          protocol: TCP
+  name: meta-deployment-config-template
 parameters:
   - name: JAVA_OPTS
     description: Options to pass to the java command
@@ -70,5 +33,46 @@ parameters:
   - name: GRID_UNREGISTER_IF_STILL_DOWN_AFTER
     description: Time to wait before unregistering nodes
     value: "500"
-labels:
-  selenium-hub: master
+objects:
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    name: selenium-hub
+  spec:
+    replicas: 1
+    selector:
+      type: selenium-hub
+    template:
+      metadata:
+        labels:
+          type: selenium-hub
+        name: selenium-hub
+      spec:
+        containers:
+        - env:
+          - name: JAVA_OPTS
+            value: ${JAVA_OPTS}
+          - name: POOL_MAX
+            value: ${POOL_MAX}
+          - name: GRID_NEW_SESSION_WAIT_TIMEOUT
+            value: ${GRID_NEW_SESSION_WAIT_TIMEOUT}
+          - name: GRID_JETTY_MAX_THREADS
+            value: ${GRID_JETTY_MAX_THREADS}
+          - name: GRID_NODE_POLLING
+            value: ${GRID_NODE_POLLING}
+          - name: GRID_CLEAN_UP_CYCLE
+            value: ${GRID_CLEAN_UP_CYCLE}
+          - name: GRID_TIMEOUT
+            value: ${GRID_TIMEOUT}
+          - name: GRID_BROWSER_TIMEOUT
+            value: ${GRID_BROWSER_TIMEOUT}
+          - name: GRID_MAX_SESSION
+            value: ${GRID_MAX_SESSION}
+          - name: GRID_UNREGISTER_IF_STILL_DOWN_AFTER
+            value: ${GRID_UNREGISTER_IF_STILL_DOWN_AFTER}
+          image: selenium/hub
+          name: master
+          ports:
+          - containerPort: 4444
+            protocol: TCP
+
