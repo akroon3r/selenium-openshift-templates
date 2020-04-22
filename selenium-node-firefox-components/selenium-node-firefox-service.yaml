@@ -1,0 +1,26 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: meta-deployment-config-template
+objects:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: selenium-node-firefox-debug
+  spec:
+    selector:
+      browser: firefox
+    type: ClusterIP
+    ports:
+    - name: node-port
+      port: 5555
+      targetPort: 5555
+      protocol: TCP
+    - name: vnc-port
+      port: 5900
+      targetPort: 5900
+      protocol: TCP
+    - name: node-port-grid
+      port: 4444
+      targetPort: 4444
+      protocol: TCP

@@ -1,0 +1,13 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: meta-deployment-config-template
+objects:
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    name: selenium-node-firefox-debug
+  spec:
+    dockerImageRepository: ''
+    tags:
+    - name: latest
