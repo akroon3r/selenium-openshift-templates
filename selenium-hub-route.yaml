@@ -1,14 +1,19 @@
+kind: Template
 apiVersion: v1
-kind: Route
 metadata:
-  name: selenium-hub
-spec:
-  host: ${HUB_ROUTE}
-  port:
-    targetPort: 4444
-  to:
-    kind: Service
-    name: selenium-hub
+  name: meta-deployment-config-template
 parameters:
   - name: HUB_ROUTE
     description: Route name for the Selenium Hub
+objects:
+- apiVersion: v1
+  kind: Route
+  metadata:
+    name: selenium-hub
+  spec:
+    host: ${HUB_ROUTE}
+    port:
+      targetPort: 4444
+    to:
+      kind: Service
+      name: selenium-hub
