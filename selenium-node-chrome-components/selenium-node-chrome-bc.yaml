@@ -1,0 +1,26 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: meta-deployment-config-template
+objects:
+- kind: BuildConfig
+  apiVersion: v1
+  metadata:
+    name: selenium-node-chrome
+  spec:
+    triggers:
+    - type: ConfigChange
+      configChange: {}
+    source:
+      contextDir: selenium-node-chrome
+      type: Git
+      git:
+        uri: https://github.com/akroon3r/selenium-openshift-templates
+        ref: master
+    strategy:
+      type: Docker
+      DockerStrategy: {}
+    output:
+      to:
+        kind: ImageStreamTag
+        name: selenium-node-chrome:latest
