@@ -1,0 +1,26 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: meta-deployment-config-template
+objects:
+- kind: BuildConfig
+  apiVersion: v1
+  metadata:
+    name: selenium-node-firefox-debug
+  spec:
+    triggers:
+    - type: ConfigChange
+      configChange: {}
+    source:
+      contextDir: selenium-node-firefox-debug
+      type: Git
+      git:
+        uri: https://github.com/ddavison/selenium-openshift-templates
+        ref: master
+    strategy:
+      type: Docker
+      DockerStrategy: {}
+    output:
+      to:
+        kind: ImageStreamTag
+        name: selenium-node-firefox-debug:latest
