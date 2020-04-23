@@ -28,6 +28,8 @@ objects:
   metadata:
     name: selenium-node-chrome
     app: Selenium
+    labels:
+      app: Selenium
   spec:
     strategy:
       type: Recreate

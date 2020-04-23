@@ -27,7 +27,8 @@ objects:
   kind: DeploymentConfig
   metadata:
     name: selenium-node-firefox
-    app: Selenium
+    labels:
+      app: Selenium
   spec:
     strategy:
       type: Recreate
@@ -47,8 +48,6 @@ objects:
     template:
       metadata:
         name: selenium-node-firefox-master
-        labels:
-          app: Selenium
           browser: firefox
       spec:
         containers:
