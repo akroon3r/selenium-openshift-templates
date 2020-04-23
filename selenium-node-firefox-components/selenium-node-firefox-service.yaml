@@ -6,7 +6,7 @@ objects:
 - apiVersion: v1
   kind: Service
   metadata:
-    name: selenium-node-firefox-debug
+    name: selenium-node-firefox
   spec:
     selector:
       browser: firefox
