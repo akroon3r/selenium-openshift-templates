@@ -48,6 +48,7 @@ objects:
       metadata:
         name: selenium-node-chrome-master
         labels:
+          app: Selenium
           browser: chrome
       spec:
         containers:

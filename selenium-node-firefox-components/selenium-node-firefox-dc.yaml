@@ -48,6 +48,7 @@ objects:
       metadata:
         name: selenium-node-firefox-master
         labels:
+          app: Selenium
           browser: firefox
       spec:
         containers:
