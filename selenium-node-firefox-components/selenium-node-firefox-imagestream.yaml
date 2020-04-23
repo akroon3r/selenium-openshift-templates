@@ -6,7 +6,7 @@ objects:
 - kind: ImageStream
   apiVersion: v1
   metadata:
-    name: selenium-node-firefox-debug
+    name: selenium-node-firefox
   spec:
     dockerImageRepository: ''
     tags:

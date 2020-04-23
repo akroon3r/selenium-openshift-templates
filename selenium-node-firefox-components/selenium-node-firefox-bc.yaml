@@ -6,13 +6,13 @@ objects:
 - kind: BuildConfig
   apiVersion: v1
   metadata:
-    name: selenium-node-firefox-debug
+    name: selenium-node-firefox
   spec:
     triggers:
     - type: ConfigChange
       configChange: {}
     source:
-      contextDir: selenium-node-firefox-debug
+      contextDir: selenium-node-firefox
       type: Git
       git:
         uri: https://github.com/ddavison/selenium-openshift-templates
@@ -23,4 +23,4 @@ objects:
     output:
       to:
         kind: ImageStreamTag
-        name: selenium-node-firefox-debug:latest
+        name: selenium-node-firefox:latest
