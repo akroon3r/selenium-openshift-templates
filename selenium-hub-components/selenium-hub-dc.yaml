@@ -38,6 +38,8 @@ objects:
   kind: DeploymentConfig
   metadata:
     name: selenium-hub
+    labels:
+      app: Selenium
   spec:
     replicas: 1
     selector:
@@ -46,7 +48,6 @@ objects:
       metadata:
         labels:
           type: selenium-hub
-          app: Selenium
         name: selenium-hub
       spec:
         containers:
